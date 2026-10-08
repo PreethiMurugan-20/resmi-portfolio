@@ -10,13 +10,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Caveat:wght@600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Caveat:wght@600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
     rel="stylesheet">
 
   <link href="/src/style.css" rel="stylesheet" type="text/css" />
 
   <style>
-    /* Custom utility to override anything if necessary */
     .hero-text-shadow {
       text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
     }
@@ -26,61 +25,81 @@
 <body
   class="bg-[#F8F7F3] text-[#1a1a1a] font-['Outfit',sans-serif] antialiased min-h-screen overflow-x-hidden flex flex-col relative selection:bg-[#7C8C70] selection:text-white">
 
-  <!-- Navbar -->
-  <nav class="w-full flex items-center justify-between px-8 md:px-16 py-6 relative z-50">
-    <a href="#" class="text-3xl font-black tracking-tight flex items-baseline">
-      RESMI<span class="text-[#7C8C70] text-4xl">.</span>
-    </a>
-    <div class="hidden md:flex space-x-10 text-sm font-semibold text-gray-800">
-      <a href="#" class="border-b-2 border-[#7C8C70] pb-0.5">Home</a>
-      <a href="#" class="hover:text-[#7C8C70] transition-colors pb-0.5">About</a>
-      <a href="#" class="hover:text-[#7C8C70] transition-colors pb-0.5">Work</a>
-      <a href="#" class="hover:text-[#7C8C70] transition-colors pb-0.5">Services</a>
-      <a href="#" class="hover:text-[#7C8C70] transition-colors pb-0.5">Contact</a>
+  <!-- Floating Navbar -->
+  <header class="absolute top-4 md:top-6 left-0 right-0 w-full px-4 sm:px-6 md:px-10 z-50 pointer-events-none">
+    <nav
+      class="max-w-[1360px] mx-auto bg-[#FDFDFB]/90 backdrop-blur-md border border-[#e5e3db] shadow-[0_10px_30px_-8px_rgba(0,0,0,0.07)] rounded-full px-6 md:px-8 py-3 md:py-3.5 flex items-center justify-between pointer-events-auto transition-all">
+
+      <!-- Brand Logo -->
+      <a href="#" class="text-2xl md:text-3xl font-black tracking-tight flex items-baseline select-none">
+        RESMI<span class="text-[#7C8C70] text-3xl md:text-4xl leading-none">.</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center space-x-8 text-sm font-semibold text-gray-700">
+        <a href="#" class="text-[#1a1a1a] font-bold border-b-2 border-[#7C8C70] pb-0.5">Home</a>
+        <a href="#about" class="hover:text-[#7C8C70] transition-colors pb-0.5">About</a>
+        <a href="#experience" class="hover:text-[#7C8C70] transition-colors pb-0.5">Experience</a>
+        <a href="#education" class="hover:text-[#7C8C70] transition-colors pb-0.5">Education</a>
+        <a href="#contact" class="hover:text-[#7C8C70] transition-colors pb-0.5">Contact</a>
+      </div>
+
+      <!-- Action & Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <a href="#contact"
+          class="bg-[#7C8C70] text-white px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-semibold flex items-center gap-2 hover:bg-[#6a785f] transition-all transform hover:-translate-y-0.5 shadow-sm hover:shadow-md">
+          <span>Let's Connect</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+          </svg>
+        </a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button id="mobile-menu-btn"
+          class="md:hidden p-2 rounded-full text-gray-700 hover:text-black hover:bg-black/5 transition-colors focus:outline-none"
+          aria-label="Toggle navigation menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer / Dropdown -->
+    <div id="mobile-menu"
+      class="hidden md:hidden max-w-[1360px] mx-auto mt-2 bg-[#FDFDFB]/95 backdrop-blur-md border border-[#e5e3db] shadow-[0_12px_30px_rgba(0,0,0,0.08)] rounded-2xl p-5 flex flex-col space-y-3 text-sm font-semibold pointer-events-auto transition-all">
+      <a href="#" class="text-[#7C8C70] font-bold py-1">Home</a>
+      <a href="#about" class="text-gray-700 hover:text-[#7C8C70] py-1 transition-colors">About</a>
+      <a href="#experience" class="text-gray-700 hover:text-[#7C8C70] py-1 transition-colors">Experience</a>
+      <a href="#education" class="text-gray-700 hover:text-[#7C8C70] py-1 transition-colors">Education</a>
+      <a href="#contact" class="text-gray-700 hover:text-[#7C8C70] py-1 transition-colors">Contact</a>
     </div>
-    <a href="#"
-      class="bg-[#7C8C70] text-white px-6 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-[#6a785f] transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg">
-      Let's Connect
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"
-        stroke="currentColor" stroke-width="2.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-      </svg>
-    </a>
-  </nav>
+  </header>
 
   <!-- Hero Section -->
-  <main class="flex-1 w-full relative flex flex-col items-center pt-8 md:pt-12">
-
-    <!-- Top Tags -->
-    <div class="text-xs font-bold tracking-[0.3em] uppercase mb-4 z-10 flex items-center gap-4 text-gray-800">
-      <span>SEO</span>
-      <span class="text-[#7C8C70] text-lg font-light">&times;</span>
-      <span>CONTENT</span>
-      <span class="text-[#7C8C70] text-lg font-light">&times;</span>
-      <span>STRATEGY</span>
-    </div>
-
+  <main id="hero" class="w-full relative flex flex-col items-center pt-28 md:pt-32 min-h-screen z-20">
     <!-- Massive Background Text -->
     <div
-      class="w-full flex flex-col items-center justify-center leading-[0.8] z-0 select-none absolute top-28 md:top-32 left-0 right-0 pointer-events-none overflow-hidden px-4">
-      <h1 class="text-[13vw] font-black uppercase text-[#141414] tracking-tighter m-0 p-0 text-center w-full">CONTENT
+      class="w-full flex flex-col items-center justify-center leading-[0.8] z-0 select-none absolute top-32 md:top-40 left-0 right-0 pointer-events-none overflow-hidden px-4">
+      <h1 class="text-[10vw] font-black uppercase text-[#141414] tracking-tighter m-0 p-0 text-center w-full">CONTENT
       </h1>
       <h1
-        class="text-[13vw] font-black uppercase text-[#7C8C70] tracking-tighter m-0 p-0 text-center w-full relative -top-[1.5vw]">
+        class="text-[10vw] font-black uppercase text-[#7C8C70] tracking-tighter m-0 p-0 text-center w-full relative -top-[1.5vw]">
         STRATEGIST</h1>
     </div>
 
     <!-- Foreground Content Wrapper -->
     <div
-      class="w-full max-w-[1400px] mx-auto px-6 md:px-16 mt-16 md:mt-8 flex flex-col lg:flex-row items-end justify-between relative z-10 flex-1 min-h-[500px]">
+      class="w-full max-w-[1400px] mx-auto px-6 md:px-16 mt-28 md:mt-20 flex flex-col lg:flex-row items-end justify-between relative z-10 flex-1 min-h-[500px]">
 
       <!-- Left Content -->
-      <div class="w-full lg:w-[30%] pb-12 lg:pb-20 mt-8 lg:mt-32 order-2 lg:order-1 relative z-20">
+      <div class="w-full lg:w-[30%] pb-12 lg:pb-20 mt-8 lg:mt-52 order-2 lg:order-1 relative z-20">
         <h2 class="text-2xl lg:text-3xl font-bold leading-[1.2] mb-5 text-[#1a1a1a]">Turning ideas into content that
           connects, ranks &amp; grows brands.</h2>
-        <p class="text-[15px] text-gray-700 mb-8 leading-relaxed font-medium">SEO-driven content, creative storytelling
-          and strategy built for meaningful digital growth.</p>
-        <a href="#"
+        <p class="text-[15px] text-gray-700 mb-8 leading-relaxed font-medium">SEO-driven content, creative
+          storytelling and strategy built for meaningful digital growth.</p>
+        <a href="#about"
           class="inline-flex items-center gap-3 bg-[#7C8C70] text-white px-7 py-3 rounded-full text-sm font-bold tracking-wider hover:bg-[#6a785f] transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg group">
           EXPLORE MY WORK
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
@@ -90,35 +109,20 @@
         </a>
       </div>
 
-      <!-- Center Image -->
+      <!-- Center Image (Uplifted to touch and overlay massive background text) -->
       <div
-        class="w-full lg:w-[40%] flex justify-center items-end order-1 lg:order-2 relative z-10 lg:h-[600px] -mt-10 lg:-mt-16">
-        <!-- Abstract brush stroke effect behind image -->
+        class="w-full lg:w-[40%] flex justify-center items-end order-1 lg:order-2 relative z-10 lg:h-[600px] -mt-16 lg:-mt-28 mb-10 md:mb-0">
         <div
-          class="absolute bottom-10 left-1/2 -translate-x-1/2 w-[90%] h-[70%] bg-[#d9e0d1] rounded-[100%] -z-10 blur-3xl opacity-90 transform rotate-12">
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] aspect-square bg-[#e6dbbf] rounded-full blur-3xl opacity-80 mix-blend-multiply -z-10">
         </div>
-
-        <!-- Decoration Left -->
-        <div class="absolute top-[20%] left-0 text-[#7C8C70] transform -rotate-12">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round">
-            <path d="M4 12c4 0 6-4 6-4m0 8c0-4 4-4 4-4" />
-          </svg>
+        <div
+          class="absolute top-[30%] left-[20%] w-[80%] aspect-square bg-[#8FA07D] rounded-[40%] blur-3xl opacity-40 mix-blend-multiply transform rotate-45 -z-10">
         </div>
-
-        <!-- Decoration Right -->
-        <div class="absolute top-[35%] right-0 text-[#7C8C70]">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round">
-            <path d="M4 4l4 4M2 12h4M4 20l4-4" />
-          </svg>
-        </div>
-
-        <img src="/src/assets/resmi-image.png" alt="Resmi"
-          class="w-full max-w-[550px] object-contain drop-shadow-2xl relative z-10" />
+        <img src="/src/assets/resmi-image.png" alt="Resmi Das P.K."
+          class="w-full max-w-[350px] md:max-w-[550px] object-contain drop-shadow-2xl relative z-10" />
       </div>
 
-      <!-- Right Content (Handwritten text) -->
+      <!-- Right Content -->
       <div class="w-full lg:w-[30%] pb-12 lg:pb-48 order-3 flex justify-end relative z-20">
         <div
           class="font-['Caveat',cursive] text-4xl lg:text-[3rem] text-[#2c3329] leading-[1.1] transform -rotate-6 lg:-ml-10 relative">
@@ -128,19 +132,292 @@
             <path d="M5 15Q40 5 95 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
           </svg>
         </div>
-
-        <!-- Big Swirl Bottom Right -->
-        <svg class="absolute -bottom-10 -right-20 w-[300px] h-[200px] text-[#7C8C70] opacity-40 pointer-events-none"
-          viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-          <path d="M -20,200 C 30,160 120,60 160,110 C 200,160 80,210 30,160 C -20,110 30,50 90,50" />
-        </svg>
       </div>
-
     </div>
   </main>
 
+  <!-- About Section -->
+  <section id="about" class="w-full relative bg-[#F8F7F3] text-[#1a1a1a] z-10 overflow-hidden py-24 md:py-32">
+    <div class="max-w-[1360px] mx-auto px-6 md:px-12 lg:px-16">
+
+      <!-- 2-Column Grid matching reference image -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+        <!-- LEFT COLUMN: Heading, Highlighted Bio, Stats Cards, Socials, CTA Button -->
+        <div class="lg:col-span-7 flex flex-col items-start">
+
+          <!-- Heading -->
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#1a1a1a] mb-6">
+            I'm Resmi Das P.K.
+          </h2>
+
+          <!-- Bio Paragraph with inline bolding -->
+          <p class="text-base sm:text-[17px] text-gray-700 leading-relaxed mb-8 max-w-2xl font-normal">
+            <span class="font-bold text-[#1a1a1a]">Digital Marketing &amp; Content Strategist</span> who loves turning
+            complex ideas into simple, meaningful digital experiences. By combining <span
+              class="font-bold text-[#1a1a1a]">SEO Strategy</span>, <span class="font-bold text-[#1a1a1a]">Content
+              Marketing</span>, and <span class="font-bold text-[#1a1a1a]">Brand Storytelling</span>, I help startups
+            and businesses transform ideas into thoughtful digital narratives through <span
+              class="font-bold text-[#1a1a1a]">user-centered strategy</span>, scalable systems, and clean
+            implementation.
+          </p>
+
+          <!-- 3 Stats Cards in a horizontal row -->
+          <div class="grid grid-cols-3 gap-3 sm:gap-4 w-full max-w-lg mb-8">
+            <!-- Stat 1 -->
+            <div
+              class="bg-white/80 backdrop-blur-sm border border-[#e5e3db] rounded-2xl p-4 sm:p-5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] flex flex-col justify-center">
+              <span class="text-2xl sm:text-3xl font-black text-[#1a1a1a] tracking-tight">10+</span>
+              <span class="text-xs sm:text-[13px] text-gray-500 font-medium mt-1">Projects shipped</span>
+            </div>
+            <!-- Stat 2 -->
+            <div
+              class="bg-white/80 backdrop-blur-sm border border-[#e5e3db] rounded-2xl p-4 sm:p-5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] flex flex-col justify-center">
+              <span class="text-2xl sm:text-3xl font-black text-[#1a1a1a] tracking-tight">2+ yrs</span>
+              <span class="text-xs sm:text-[13px] text-gray-500 font-medium mt-1">Design + Tech</span>
+            </div>
+            <!-- Stat 3 -->
+            <div
+              class="bg-white/80 backdrop-blur-sm border border-[#e5e3db] rounded-2xl p-4 sm:p-5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] flex flex-col justify-center">
+              <span class="text-2xl sm:text-3xl font-black text-[#1a1a1a] tracking-tight">&lt; 2w</span>
+              <span class="text-xs sm:text-[13px] text-gray-500 font-medium mt-1">Average turnaround</span>
+            </div>
+          </div>
+
+          <!-- Social Icons Row -->
+          <div class="flex items-center gap-3 mb-10">
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+              class="w-10 h-10 rounded-xl bg-white/90 border border-[#e5e3db] text-gray-700 hover:text-[#7C8C70] hover:border-[#7C8C70] shadow-sm flex items-center justify-center transition-all transform hover:-translate-y-0.5"
+              aria-label="LinkedIn">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
+            </a>
+            <!-- Instagram -->
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+              class="w-10 h-10 rounded-xl bg-white/90 border border-[#e5e3db] text-gray-700 hover:text-[#7C8C70] hover:border-[#7C8C70] shadow-sm flex items-center justify-center transition-all transform hover:-translate-y-0.5"
+              aria-label="Instagram">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.13-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </a>
+            <!-- YouTube / Media -->
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"
+              class="w-10 h-10 rounded-xl bg-white/90 border border-[#e5e3db] text-gray-700 hover:text-[#7C8C70] hover:border-[#7C8C70] shadow-sm flex items-center justify-center transition-all transform hover:-translate-y-0.5"
+              aria-label="YouTube">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>
+            </a>
+            <!-- Medium / Blog -->
+            <a href="https://medium.com" target="_blank" rel="noopener noreferrer"
+              class="w-10 h-10 rounded-xl bg-white/90 border border-[#e5e3db] text-gray-700 hover:text-[#7C8C70] hover:border-[#7C8C70] shadow-sm flex items-center justify-center transition-all transform hover:-translate-y-0.5"
+              aria-label="Medium">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
+              </svg>
+            </a>
+            <!-- Email -->
+            <a href="mailto:hello@example.com"
+              class="w-10 h-10 rounded-xl bg-white/90 border border-[#e5e3db] text-gray-700 hover:text-[#7C8C70] hover:border-[#7C8C70] shadow-sm flex items-center justify-center transition-all transform hover:-translate-y-0.5"
+              aria-label="Email">
+              <svg class="w-4 h-4 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Bottom View Work Button -->
+          <a href="#experience"
+            class="inline-flex items-center gap-2.5 bg-[#7C8C70] hover:bg-[#6a785f] text-white px-7 py-3.5 rounded-full text-sm font-bold tracking-wide transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg group">
+            <span>View Work</span>
+            <svg class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+            </svg>
+          </a>
+
+        </div>
+
+        <!-- RIGHT COLUMN: Card with Illustration / Mockup showcase -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div
+            class="w-full max-w-[480px] bg-[#ece9e1]/70 border border-[#dedad0] rounded-[2.5rem] p-6 sm:p-8 flex flex-col items-center justify-between shadow-[0_10px_35px_-10px_rgba(0,0,0,0.06)] relative overflow-hidden group">
+
+            <!-- Top Tag -->
+            <p class="text-[11px] font-bold tracking-[0.25em] uppercase text-gray-500 mb-6 text-center">
+              Curated Strategy &amp; Showcase
+            </p>
+
+            <!-- Card Mockup with Avatar / Character and Phone UI frames -->
+            <div class="w-full relative flex items-center justify-center my-4 py-2">
+
+              <!-- Left Mini UI Card -->
+              <div
+                class="w-24 sm:w-28 bg-white/90 backdrop-blur-md rounded-xl p-2.5 shadow-md border border-gray-100 transform -rotate-6 -mr-6 z-10 hidden sm:block">
+                <div class="w-full h-12 bg-[#F8F7F3] rounded-lg mb-2 flex items-center justify-center">
+                  <div class="w-6 h-6 rounded-full bg-[#7C8C70]/20 flex items-center justify-center text-[#7C8C70]">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="h-1.5 bg-gray-200 rounded w-3/4 mb-1"></div>
+                <div class="h-1 bg-gray-100 rounded w-1/2"></div>
+              </div>
+
+              <!-- Main Center Avatar Card -->
+              <div
+                class="relative z-20 w-48 sm:w-56 aspect-[3/4] bg-white rounded-2xl p-2 shadow-2xl border border-gray-100 flex flex-col items-center justify-end overflow-hidden transform group-hover:scale-[1.03] transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-b from-[#e8ebe3] to-[#d4dcd0] -z-10"></div>
+                <img src="/src/assets/resmi-image.png" alt="Resmi"
+                  class="w-full h-full object-cover object-top drop-shadow-md rounded-xl" />
+              </div>
+
+              <!-- Right Mini UI Card (Mobile / Dark Theme style) -->
+              <div
+                class="w-24 sm:w-28 bg-[#1a1a1a] text-white rounded-xl p-2.5 shadow-lg border border-gray-800 transform rotate-6 -ml-6 z-10 hidden sm:block">
+                <div class="w-full h-12 bg-gray-800/80 rounded-lg mb-2 flex items-center justify-center">
+                  <div class="w-6 h-6 rounded-full bg-[#7C8C70] flex items-center justify-center text-white">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="h-1.5 bg-gray-600 rounded w-3/4 mb-1"></div>
+                <div class="h-1 bg-gray-700 rounded w-1/2"></div>
+              </div>
+
+            </div>
+
+            <!-- Bottom "Check Out ↗" link -->
+            <a href="#experience"
+              class="mt-6 inline-flex items-center gap-1.5 text-xs font-bold tracking-wider text-gray-700 hover:text-[#7C8C70] uppercase transition-colors">
+              <span>Check Out</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+              </svg>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="w-full relative bg-[#F8F7F3] text-[#1a1a1a] py-32 z-20 overflow-hidden">
+    <!-- Subtle BG decorations -->
+    <div
+      class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#d9e0d1] rounded-full blur-[100px] opacity-40 -z-10 translate-x-1/2 -translate-y-1/2 pointer-events-none">
+    </div>
+
+    <div class="w-full max-w-[1000px] mx-auto px-6 md:px-16">
+      <p class="text-sm font-bold tracking-[0.3em] uppercase mb-16 text-[#8FA07D]">02 &mdash; EXPERIENCE</p>
+
+      <!-- Job 1 -->
+      <div class="mb-20 border-t border-gray-300 pt-12 relative group">
+        <div
+          class="absolute top-12 -left-4 w-1 h-0 bg-[#8FA07D] transition-all duration-500 group-hover:h-[80%] hidden md:block">
+        </div>
+        <div class="flex flex-col md:flex-row md:justify-between mb-8">
+          <div>
+            <h3 class="text-3xl font-black tracking-tight uppercase text-[#182019]">Creatora Digiverse</h3>
+            <p class="text-xl text-[#8FA07D] font-bold mt-2">Junior Content Strategy & Script Writer</p>
+          </div>
+          <p class="text-sm font-bold tracking-widest text-[#66705F] mt-4 md:mt-0 uppercase">March 2026 &mdash;
+            Present
+          </p>
+        </div>
+        <ul class="space-y-4 text-[17px] text-[#4a554a] font-medium leading-relaxed max-w-3xl">
+          <li class="flex gap-4 items-start"><span class="text-[#8FA07D] font-bold mt-0.5">&rarr;</span>
+            <span>Developed
+              content strategies aligned with brand goals and target audiences.</span>
+          </li>
+          <li class="flex gap-4 items-start"><span class="text-[#8FA07D] font-bold mt-0.5">&rarr;</span> <span>Planned
+              content calendars in collaboration with marketing and creative teams.</span></li>
+          <li class="flex gap-4 items-start"><span class="text-[#8FA07D] font-bold mt-0.5">&rarr;</span>
+            <span>Researched industry trends, audience behaviour and competitors to guide content creation.</span>
+          </li>
+          <li class="flex gap-4 items-start"><span class="text-[#8FA07D] font-bold mt-0.5">&rarr;</span>
+            <span>Optimized
+              content for SEO, social media platforms and digital performance.</span>
+          </li>
+          <li class="flex gap-4 items-start"><span class="text-[#8FA07D] font-bold mt-0.5">&rarr;</span>
+            <span>Reviewed,
+              edited and refined scripts and content for clarity and impact.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Job 2 -->
+      <div class="mb-12 border-t border-gray-300 pt-12 relative group">
+        <div
+          class="absolute top-12 -left-4 w-1 h-0 bg-[#8FA07D] transition-all duration-500 group-hover:h-[80%] hidden md:block">
+        </div>
+        <div class="flex flex-col md:flex-row md:justify-between mb-8">
+          <div>
+            <h3 class="text-3xl font-black tracking-tight uppercase text-[#182019]">Freelance Content Writing</h3>
+            <p class="text-xl text-[#8FA07D] font-bold mt-2">Independent</p>
+          </div>
+          <p class="text-sm font-bold tracking-widest text-[#66705F] mt-4 md:mt-0 uppercase">Sept 2025 &mdash; Feb
+            2025
+          </p>
+        </div>
+        <ul class="space-y-4 text-[17px] text-[#4a554a] font-medium leading-relaxed max-w-3xl">
+          <li class="flex gap-4 items-start"><span class="text-[#8FA07D] font-bold mt-0.5">&rarr;</span>
+            <span>Research,
+              write and edit high-quality content for blogs and websites.</span>
+          </li>
+          <li class="flex gap-4 items-start"><span class="text-[#8FA07D] font-bold mt-0.5">&rarr;</span> <span>Develop
+              original, engaging and audience-focused content aligned with client goals.</span></li>
+          <li class="flex gap-4 items-start"><span class="text-[#8FA07D] font-bold mt-0.5">&rarr;</span> <span>Adapt
+              writing style and tone to different industries and target audiences.</span></li>
+          <li class="flex gap-4 items-start"><span class="text-[#8FA07D] font-bold mt-0.5">&rarr;</span> <span>Perform
+              keyword research and integrate keywords naturally into content.</span></li>
+          <li class="flex gap-4 items-start"><span class="text-[#8FA07D] font-bold mt-0.5">&rarr;</span> <span>Write
+              SEO-friendly titles, meta descriptions and headings.</span></li>
+          <li class="flex gap-4 items-start"><span class="text-[#8FA07D] font-bold mt-0.5">&rarr;</span>
+            <span>Optimize
+              content structure for readability and search engine performance.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="w-full relative bg-[#F8F7F3] text-[#1a1a1a] pb-32 pt-16 z-20">
+    <div class="w-full max-w-[1000px] mx-auto px-6 md:px-16">
+      <p class="text-sm font-bold tracking-[0.3em] uppercase mb-16 text-[#8FA07D]">03 &mdash; EDUCATION</p>
+
+      <div class="border-t border-gray-300 pt-12 relative group">
+        <div
+          class="absolute top-12 -left-4 w-1 h-0 bg-[#8FA07D] transition-all duration-500 group-hover:h-[80%] hidden md:block">
+        </div>
+        <div class="flex flex-col md:flex-row md:justify-between items-start">
+          <div>
+            <h3 class="text-3xl font-black tracking-tight uppercase text-[#182019]">Bachelor of Commerce</h3>
+            <p class="text-xl text-[#66705F] font-bold mt-2">Calicut University</p>
+          </div>
+          <p class="text-sm font-bold tracking-widest text-[#8FA07D] mt-4 md:mt-0 uppercase">2018 &mdash; 2021</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Bottom Footer Line -->
-  <footer class="w-full py-6 flex items-center justify-center space-x-6 z-50 relative bg-transparent px-4 mt-auto">
+  <footer
+    class="w-full py-12 flex items-center justify-center space-x-6 z-50 relative bg-[#F8F7F3] px-4 mt-auto border-t border-gray-200">
     <div class="h-[1px] w-12 md:w-32 bg-gray-300"></div>
     <span
       class="text-[10px] md:text-[12px] font-bold tracking-[0.25em] text-gray-500 uppercase text-center whitespace-nowrap">RESMI
