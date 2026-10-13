@@ -3,7 +3,8 @@ const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 
 if (mobileMenuBtn && mobileMenu) {
-  mobileMenuBtn.addEventListener('click', () => {
+  mobileMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     mobileMenu.classList.toggle('hidden');
   });
 
@@ -13,6 +14,14 @@ if (mobileMenuBtn && mobileMenu) {
     link.addEventListener('click', () => {
       mobileMenu.classList.add('hidden');
     });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const target = e.target as Node;
+    if (!mobileMenu.contains(target) && !mobileMenuBtn.contains(target)) {
+      mobileMenu.classList.add('hidden');
+    }
   });
 }
 
