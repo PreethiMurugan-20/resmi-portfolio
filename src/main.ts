@@ -43,6 +43,22 @@ if (mobileMenuBtn && mobileMenu) {
   });
 }
 
+// Sticky header subtle shadow elevation on scroll
+const headerNav = document.querySelector('header nav');
+if (headerNav) {
+  const updateHeaderShadow = () => {
+    if (window.scrollY > 20) {
+      headerNav.classList.add('shadow-[0_12px_36px_-6px_rgba(0,0,0,0.12)]', 'bg-[#FDFDFB]/95');
+      headerNav.classList.remove('shadow-[0_10px_30px_-8px_rgba(0,0,0,0.07)]', 'bg-[#FDFDFB]/90');
+    } else {
+      headerNav.classList.remove('shadow-[0_12px_36px_-6px_rgba(0,0,0,0.12)]', 'bg-[#FDFDFB]/95');
+      headerNav.classList.add('shadow-[0_10px_30px_-8px_rgba(0,0,0,0.07)]', 'bg-[#FDFDFB]/90');
+    }
+  };
+  window.addEventListener('scroll', updateHeaderShadow, { passive: true });
+  updateHeaderShadow();
+}
+
 // Viewport Reveal Animations for Contact Section
 const observerOptions = {
   root: null,
