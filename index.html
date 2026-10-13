@@ -59,9 +59,15 @@
         <!-- Mobile Hamburger Toggle -->
         <button id="mobile-menu-btn"
           class="lg:hidden p-2 rounded-full text-gray-700 hover:text-black hover:bg-black/5 transition-colors focus:outline-none"
-          aria-label="Toggle navigation menu">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          aria-label="Toggle navigation menu"
+          aria-expanded="false">
+          <!-- Hamburger Icon (shown when closed) -->
+          <svg id="menu-icon-open" class="w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+          <!-- Close (X) Icon (shown when open) -->
+          <svg id="menu-icon-close" class="w-6 h-6 hidden transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
